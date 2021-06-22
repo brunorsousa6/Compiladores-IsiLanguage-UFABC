@@ -17,8 +17,6 @@ Verificar se variável declarada foi ou não utilizada
 Linguagem Destino (C/Java/Python) (OK)
 
 
-* Itens Opcionais * :
-
 Exemplos de itens opcionais:
 - mais tipos de dados
 - mais estruturas de repetições
