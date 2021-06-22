@@ -12,7 +12,7 @@ Requisitos Necessários:
 - Verificar atribuição de variáveis (erro semântico) - compatibilidade de tipos
 - Possui operações de Entrada e Saída
 - Aceitar números decimais
-- Verificar se variável foi ou não declarada
+- Verificar se variável foi ou não declarada (OK)
 - Verificar se variável declarada foi ou não utilizada
 - Linguagem Destino (C/Java/Python) (OK)
 
