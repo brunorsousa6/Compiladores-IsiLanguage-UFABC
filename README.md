@@ -17,6 +17,11 @@ Requisitos Necessários:
 - Linguagem Destino (C/Java/Python) (OK)
 
 
+Itens opcionais criados:
+
+- contador de tempo de compilação
+- entrada para nome dos arquivos
+
 Exemplos de itens opcionais:
 - mais tipos de dados
 - mais estruturas de repetições
