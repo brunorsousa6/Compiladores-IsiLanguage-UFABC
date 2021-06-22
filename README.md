@@ -19,8 +19,8 @@ Requisitos Necessários:
 
 Itens opcionais criados:
 
-- contador de tempo de compilação
-- entrada para nome dos arquivos
+- contador de tempo de compilação (OK)
+- entrada para nome dos arquivos (OK)
 
 Exemplos de itens opcionais:
 - mais tipos de dados
