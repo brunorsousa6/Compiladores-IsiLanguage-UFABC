@@ -25,6 +25,11 @@ public class MainClass {
 			Scanner scan =  new Scanner(System.in);
 			String file  = scan.next();
 			
+			if(!file.endsWith(".isi")) {
+				file = file + ".isi";
+				
+			}
+			
 			// leio o arquivo "input.isi" e isso é entrada para o Analisador Lexico
 			lexer = new IsiLangLexer(CharStreams.fromFileName(file));
 			
@@ -43,8 +48,8 @@ public class MainClass {
 			
 			parser.generateCode();
 			
-			long delay = System.currentTimeMillis() - initial;
-			System.out.println("O programa foi compilado em %.4f"+ delay+" milissegundos");
+			long delay = (System.currentTimeMillis() - initial);
+			System.out.printf("O programa foi compilado em %03d%n milissegundos ", delay);
 			
 		}
 		catch(IsiSemanticException ex) {

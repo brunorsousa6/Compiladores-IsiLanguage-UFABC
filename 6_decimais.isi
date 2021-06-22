@@ -1,0 +1,10 @@
+programa
+
+	numero a, b;
+	
+	a = 2.0;
+	
+	leia(a);
+	
+	
+fimprog;

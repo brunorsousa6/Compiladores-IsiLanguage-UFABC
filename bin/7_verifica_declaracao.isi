@@ -1,0 +1,6 @@
+programa
+	texto t1, t2;
+	
+	a = 10;
+
+fimprog;
