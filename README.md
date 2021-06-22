@@ -8,7 +8,7 @@ Requisitos Necessários:
 
 - Possuir 2 tipos de variáveis (pelo menos 1 deles String) (OK)
 - Possuir a instrução if-else(OK)
-- Pelo menos 1 estrutura de repetição(OK)
+- Pelo menos 1 estrutura de repetição
 - Verificar atribuição de variáveis (erro semântico) - compatibilidade de tipos
 - Possui operações de Entrada e Saída
 - Aceitar números decimais
