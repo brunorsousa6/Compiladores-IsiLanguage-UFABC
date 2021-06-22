@@ -1,5 +1,7 @@
 package br.com.isilanguage.main;
 
+import java.util.Scanner;
+
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -19,8 +21,12 @@ public class MainClass {
 			IsiLangLexer lexer;
 			IsiLangParser parser;
 			
+			
+			Scanner scan =  new Scanner(System.in);
+			String file  = scan.next();
+			
 			// leio o arquivo "input.isi" e isso é entrada para o Analisador Lexico
-			lexer = new IsiLangLexer(CharStreams.fromFileName("input.isi"));
+			lexer = new IsiLangLexer(CharStreams.fromFileName(file));
 			
 			// crio um "fluxo de tokens" para passar para o PARSER
 			CommonTokenStream tokenStream = new CommonTokenStream(lexer);
@@ -30,11 +36,15 @@ public class MainClass {
 			
 			parser.prog();
 			
-			System.out.println("Compilation Successful");
+			System.out.println("Compilacao bem sucedida");
+			long initial = System.currentTimeMillis();
 			
 			parser.exibeComandos();
 			
 			parser.generateCode();
+			
+			long delay = System.currentTimeMillis() - initial;
+			System.out.println("O programa foi compilado em %.4f"+ delay+" milissegundos");
 			
 		}
 		catch(IsiSemanticException ex) {
