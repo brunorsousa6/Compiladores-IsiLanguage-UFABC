@@ -10,8 +10,8 @@ Requisitos Necessários:
 - Possuir a instrução if-else(OK)
 - Pelo menos 1 estrutura de repetição
 - Verificar atribuição de variáveis (erro semântico) - compatibilidade de tipos
-- Possui operações de Entrada e Saída
-- Aceitar números decimais
+- Possui operações de Entrada e Saída (OK)
+- Aceitar números decimais (OK)
 - Verificar se variável foi ou não declarada (OK)
 - Verificar se variável declarada foi ou não utilizada
 - Linguagem Destino (C/Java/Python) (OK)
@@ -21,6 +21,7 @@ Itens opcionais criados:
 
 - contador de tempo de compilação (OK)
 - entrada para nome dos arquivos (OK)
+- auto-implementação da extensão "isi" na entrada do arquivo (OK)
 
 Exemplos de itens opcionais:
 - mais tipos de dados

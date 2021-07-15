@@ -1,18 +1,18 @@
 // Generated from IsiLang.g4 by ANTLR 4.7.1
 package br.com.isilanguage.parser;
 
+	import br.com.isilanguage.datastructures.IsiSymbol;
+	import br.com.isilanguage.datastructures.IsiVariable;
+	import br.com.isilanguage.datastructures.IsiSymbolTable;
+	import br.com.isilanguage.exceptions.IsiSemanticException;
+	import br.com.isilanguage.ast.IsiProgram;
 	import br.com.isilanguage.ast.AbstractCommand;
-import br.com.isilanguage.ast.CommandAtribuicao;
-import br.com.isilanguage.ast.CommandDecisao;
-import br.com.isilanguage.ast.CommandEscrita;
-import br.com.isilanguage.ast.CommandLeitura;
-import br.com.isilanguage.ast.IsiProgram;
-import br.com.isilanguage.datastructures.IsiSymbol;
-import br.com.isilanguage.datastructures.IsiSymbolTable;
-import br.com.isilanguage.datastructures.IsiVariable;
-import br.com.isilanguage.exceptions.IsiSemanticException;
-
-import java.util.ArrayList;
+	import br.com.isilanguage.ast.CommandLeitura;
+	import br.com.isilanguage.ast.CommandEscrita;
+	import br.com.isilanguage.ast.CommandAtribuicao;
+	import br.com.isilanguage.ast.CommandDecisao;
+	import br.com.isilanguage.ast.CommandEnquanto;
+	import java.util.ArrayList;
 	import java.util.Stack;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -122,6 +122,16 @@ public interface IsiLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitCmdselecao(IsiLangParser.CmdselecaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link IsiLangParser#cmdenquanto}.
+	 * @param ctx the parse tree
+	 */
+	void enterCmdenquanto(IsiLangParser.CmdenquantoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link IsiLangParser#cmdenquanto}.
+	 * @param ctx the parse tree
+	 */
+	void exitCmdenquanto(IsiLangParser.CmdenquantoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link IsiLangParser#expr}.
 	 * @param ctx the parse tree

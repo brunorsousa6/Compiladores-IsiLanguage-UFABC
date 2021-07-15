@@ -11,6 +11,7 @@ grammar IsiLang;
 	import br.com.isilanguage.ast.CommandEscrita;
 	import br.com.isilanguage.ast.CommandAtribuicao;
 	import br.com.isilanguage.ast.CommandDecisao;
+	import br.com.isilanguage.ast.CommandEnquanto;
 	import java.util.ArrayList;
 	import java.util.Stack;
 }
@@ -31,10 +32,11 @@ grammar IsiLang;
 	private String _exprDecision;
 	private ArrayList<AbstractCommand> listaTrue;
 	private ArrayList<AbstractCommand> listaFalse;
+	private ArrayList<AbstractCommand> commandEnq;
 	
 	public void verificaID(String id){
 		if (!symbolTable.exists(id)){
-			throw new IsiSemanticException("Symbol "+id+" not declared");
+			throw new IsiSemanticException("Symbol "+id+" not declared ");
 		}
 	}
 	
@@ -47,11 +49,26 @@ grammar IsiLang;
 	public void generateCode(){
 		program.generateTarget();
 	}
+	
+	public void verificaUtilizacao(){
+		for(IsiSymbol var : symbolTable.getAll()){
+			IsiVariable vari = (IsiVariable)var;
+			if(vari.getValue() == null){
+				throw new IsiSemanticException("A variavel "+vari.getName()+" não foi utilizada");
+			}
+			
+		}
+		
+	}
+	
+	
+	
 }
 
 prog	: 'programa' decl bloco  'fimprog;'
            {  program.setVarTable(symbolTable);
            	  program.setComandos(stack.pop());
+           	  verificaUtilizacao();
            	 
            } 
 		;
@@ -68,7 +85,7 @@ declaravar :  tipo ID  {
 	                     symbolTable.add(symbol);	
 	                  }
 	                  else{
-	                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared");
+	                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared ");
 	                  }
                     } 
               (  VIR 
@@ -80,7 +97,7 @@ declaravar :  tipo ID  {
 	                     symbolTable.add(symbol);	
 	                  }
 	                  else{
-	                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared");
+	                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared ");
 	                  }
                     }
               )* 
@@ -101,7 +118,8 @@ bloco	: { curThread = new ArrayList<AbstractCommand>();
 cmd		:  cmdleitura  
  		|  cmdescrita 
  		|  cmdattrib
- 		|  cmdselecao  
+ 		|  cmdselecao
+ 		|  cmdenquanto  
 		;
 		
 cmdleitura	: 'leia' AP
@@ -174,6 +192,26 @@ cmdselecao  :  'se' AP
                    	}
                    )?
             ;
+            
+cmdenquanto  : 'enquanto' AP
+			 			  ID { _exprDecision = _input.LT(-1).getText(); }
+             		      OPREL { _exprDecision += _input.LT(-1).getText(); }
+             			  (ID | NUMBER) {_exprDecision += _input.LT(-1).getText(); }
+             			  FP 
+             			  ACH 
+             			  { 
+            	 		  curThread = new ArrayList<AbstractCommand>();
+                 		  stack.push(curThread);
+             			  }
+             			  (cmd)+ 
+                    
+             			  FCH 
+             			  {
+                  		  commandEnq = stack.pop();
+                  		  CommandEnquanto cmd = new CommandEnquanto(_exprDecision, commandEnq);
+                  		  stack.peek().add(cmd);	
+                          }
+             			  ; 
 			
 expr		:  termo ( 
 	             OP  { _exprContent += _input.LT(-1).getText();}
@@ -190,6 +228,7 @@ termo		: ID { verificaID(_input.LT(-1).getText());
               	_exprContent += _input.LT(-1).getText();
               }
 			;
+			
 			
 	
 AP	: '('
