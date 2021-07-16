@@ -8,12 +8,12 @@ Requisitos Necessários:
 
 - Possuir 2 tipos de variáveis (pelo menos 1 deles String) (OK)
 - Possuir a instrução if-else(OK)
-- Pelo menos 1 estrutura de repetição
+- Pelo menos 1 estrutura de repetição(OK)
 - Verificar atribuição de variáveis (erro semântico) - compatibilidade de tipos
 - Possui operações de Entrada e Saída (OK)
 - Aceitar números decimais (OK)
 - Verificar se variável foi ou não declarada (OK)
-- Verificar se variável declarada foi ou não utilizada
+- Verificar se variável declarada foi ou não utilizada(OK)
 - Linguagem Destino (C/Java/Python) (OK)
 
 
