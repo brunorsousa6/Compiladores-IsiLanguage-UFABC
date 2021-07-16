@@ -50,17 +50,29 @@ grammar IsiLang;
 		program.generateTarget();
 	}
 	
-	public void verificaUtilizacao(){
-		for(IsiSymbol var : symbolTable.getAll()){
-			IsiVariable vari = (IsiVariable)var;
-			if(vari.getValue() == null){
-				throw new IsiSemanticException("A variavel "+vari.getName()+" não foi utilizada");
-			}
-			
+	
+	
+	public void compatType(String id){
+		IsiVariable compatVar =(IsiVariable) symbolTable.get(id);
+		if(compatVar.getType() != IsiVariable.NUMBER){
+			throw new IsiSemanticException("A variavel "+compatVar.getName()+" não pode receber atribuição do tipo numero");
+		}
+		else if(compatVar.getType() != IsiVariable.TEXT){
+			throw new IsiSemanticException("A variavel "+compatVar.getName()+" não pode receber atribuição do tipo texto");
 		}
 		
 	}
 	
+	public void verificaUtilizacao(){
+		
+		for(IsiSymbol var: symbolTable.getAll()){
+			IsiVariable varUsed = (IsiVariable) var;
+			if(varUsed.getValue()== null){
+				throw new IsiSemanticException("A variavel "+ varUsed.getName()+ " não foi utilizada");
+			}
+		}
+		}
+		
 	
 	
 }
@@ -133,6 +145,7 @@ cmdleitura	: 'leia' AP
               	IsiVariable var = (IsiVariable)symbolTable.get(_readID);
               	CommandLeitura cmd = new CommandLeitura(_readID, var);
               	stack.peek().add(cmd);
+                var.setValue("10");
               }   
 			;
 			
@@ -146,6 +159,8 @@ cmdescrita	: 'escreva'
                {
                	  CommandEscrita cmd = new CommandEscrita(_writeID);
                	  stack.peek().add(cmd);
+               	  IsiVariable var = (IsiVariable)symbolTable.get(_writeID);
+               	  var.setValue("10");
                }
 			;
 			
@@ -157,7 +172,11 @@ cmdattrib	:  ID { verificaID(_input.LT(-1).getText());
                SC
                {
                	 CommandAtribuicao cmd = new CommandAtribuicao(_exprID, _exprContent);
+               	 compatType(_exprID);
                	 stack.peek().add(cmd);
+               	 IsiVariable var = (IsiVariable)symbolTable.get(_exprID);
+               	 var.setValue(_exprContent);
+               	 
                }
 			;
 			
@@ -227,6 +246,12 @@ termo		: ID { verificaID(_input.LT(-1).getText());
               {
               	_exprContent += _input.LT(-1).getText();
               }
+             |
+             
+             	TEXT
+             	{
+             	_exprContent += _input.LT(-1).getText();	
+             	}
 			;
 			
 			
@@ -262,7 +287,11 @@ OPREL : '>' | '<' | '>=' | '<=' | '==' | '!='
 ID	: [a-z] ([a-z] | [A-Z] | [0-9])*
 	;
 	
+TEXT : '\''.*?'\''
+	 ;
+	
 NUMBER	: [0-9]+ ('.' [0-9]+)?
 		;
+
 		
 WS	: (' ' | '\t' | '\n' | '\r') -> skip;

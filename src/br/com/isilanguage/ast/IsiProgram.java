@@ -61,5 +61,5 @@ public class IsiProgram {
 	public void setProgramName(String programName) {
 		this.programName = programName;
 	}
-
+	
 }

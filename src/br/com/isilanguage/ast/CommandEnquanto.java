@@ -26,6 +26,6 @@ public class CommandEnquanto extends AbstractCommand {
 	@Override
 	public String toString() {
 		return "CommandEnquanto [condition=" + condition + ", commandsEnq="
-				+ "]";
+				+commandsEnq+"]";
 	}
 }

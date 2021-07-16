@@ -2,7 +2,7 @@ programa
 
 	numero a;
 	
-	a = teste;
+	a = 'teste';
 
 
 

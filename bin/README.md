@@ -21,7 +21,7 @@ Itens opcionais criados:
 
 - contador de tempo de compilação (OK)
 - entrada para nome dos arquivos (OK)
-- auto-implementação da extensão "isi" na entrada do arquivo (OK)
+- auto-implementação da extensão ".isi" na entrada do arquivo (OK)
 
 Exemplos de itens opcionais:
 - mais tipos de dados

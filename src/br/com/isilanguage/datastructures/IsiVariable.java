@@ -7,11 +7,12 @@ public class IsiVariable extends IsiSymbol {
 	
 	private int type;
 	private String value;
-	
+
 	public IsiVariable(String name, int type, String value) {
 		super(name);
 		this.type = type;
 		this.value = value;
+		
 	}
 
 	public int getType() {
@@ -23,7 +24,9 @@ public class IsiVariable extends IsiSymbol {
 	}
 
 	public String getValue() {
+		
 		return value;
+		
 	}
 
 	public void setValue(String value) {
