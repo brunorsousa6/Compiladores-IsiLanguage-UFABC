@@ -9,7 +9,7 @@ Requisitos Necessários:
 - Possuir 2 tipos de variáveis (pelo menos 1 deles String) (OK)
 - Possuir a instrução if-else(OK)
 - Pelo menos 1 estrutura de repetição(OK)
-- Verificar atribuição de variáveis (erro semântico) - compatibilidade de tipos
+- Verificar atribuição de variáveis (erro semântico) - compatibilidade de tipos(OK)
 - Possui operações de Entrada e Saída (OK)
 - Aceitar números decimais (OK)
 - Verificar se variável foi ou não declarada (OK)
