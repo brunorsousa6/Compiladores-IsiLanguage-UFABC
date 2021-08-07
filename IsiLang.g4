@@ -98,7 +98,7 @@ declaravar :  tipo ID  {
 	                     symbolTable.add(symbol);	
 	                  }
 	                  else{
-	                  	 throw new IsiSemanticException("A variavel"+_varName+" ja foi declarada");
+	                  	 throw new IsiSemanticException("A variavel "+_varName+" ja foi declarada");
 	                  }
                     } 
               (  VIR 

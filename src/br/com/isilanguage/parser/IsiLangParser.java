@@ -318,7 +318,7 @@ public class IsiLangParser extends Parser {
 				                     symbolTable.add(symbol);	
 				                  }
 				                  else{
-				                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared ");
+				                  	 throw new IsiSemanticException("A variavel "+_varName+" ja foi declarada");
 				                  }
 			                    
 			setState(45);
@@ -339,7 +339,7 @@ public class IsiLangParser extends Parser {
 					                     symbolTable.add(symbol);	
 					                  }
 					                  else{
-					                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared ");
+					                  	 throw new IsiSemanticException("A variavel "+_varName+" ja foi declarada ");
 					                  }
 				                    
 				}

@@ -275,7 +275,7 @@ public class IsiLangParser extends Parser {
 				                     symbolTable.add(symbol);	
 				                  }
 				                  else{
-				                  	 throw new IsiSemanticException("A variavel"+_varName+" ja foi declarada");
+				                  	 throw new IsiSemanticException("A variavel "+_varName+" ja foi declarada");
 				                  }
 			                    
 			setState(45);
