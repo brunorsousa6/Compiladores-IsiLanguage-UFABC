@@ -50,7 +50,7 @@ public class MainClass {
 			
 			long fim = System.currentTimeMillis();
 			long delay = (fim - initial);
-			System.out.printf("O programa foi compilado em"+delay+"ms");
+			System.out.printf("O programa foi compilado em "+delay+"ms");
 			
 		}
 		catch(IsiSemanticException ex) {

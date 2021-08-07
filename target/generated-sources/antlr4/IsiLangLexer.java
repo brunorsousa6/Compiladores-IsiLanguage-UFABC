@@ -86,15 +86,17 @@ public class IsiLangLexer extends Lexer {
 		
 		
 		
-		public void compatType(String id){
-			IsiVariable compatVar =(IsiVariable) symbolTable.get(id);
-			if(compatVar.getType() != IsiVariable.NUMBER){
-				throw new IsiSemanticException("A variavel "+compatVar.getName()+" n�o pode receber atribui��o do tipo numero");
-			}
-			else if(compatVar.getType() != IsiVariable.TEXT){
-				throw new IsiSemanticException("A variavel "+compatVar.getName()+" n�o pode receber atribui��o do tipo texto");
-			}
+		public void compatType(IsiVariable var){
+			boolean number = var.getValue().matches(".*[0-9].*");
+			boolean string = var.getValue().matches(".*[a-zA-Z].");
+			System.out.println(var.toString()+" o valor de number "+number+ "o valor de string "+string);
 			
+			if(var.getType() != IsiVariable.NUMBER && number == true){
+				throw new IsiSemanticException("A variavel "+var.getName()+" n�o pode receber atribui��o do tipo numero");
+			}
+			else if(var.getType() != IsiVariable.TEXT && string == true) {
+				throw new IsiSemanticException("A variavel "+var.getName()+" n�o pode receber atribui��o do tipo texto");
+			}
 		}
 		
 		public void verificaUtilizacao(){

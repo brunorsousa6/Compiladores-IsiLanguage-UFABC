@@ -135,15 +135,17 @@ public class IsiLangParser extends Parser {
 		
 		
 		
-		public void compatType(String id){
-			IsiVariable compatVar =(IsiVariable) symbolTable.get(id);
-			if(compatVar.getType() != IsiVariable.NUMBER){
-				throw new IsiSemanticException("A variavel "+compatVar.getName()+" não pode receber atribuição do tipo numero");
-			}
-			else if(compatVar.getType() != IsiVariable.TEXT){
-				throw new IsiSemanticException("A variavel "+compatVar.getName()+" não pode receber atribuição do tipo texto");
-			}
+		public void compatType(IsiVariable var){
+			boolean number = var.getValue().matches(".*[0-9].*");
+			boolean string = var.getValue().matches(".*[a-zA-Z].");
+			System.out.println(var.toString()+" o valor de number "+number+ "o valor de string "+string);
 			
+			if(var.getType() != IsiVariable.NUMBER && number == true){
+				throw new IsiSemanticException("A variavel "+var.getName()+" não pode receber atribuição do tipo numero");
+			}
+			else if(var.getType() != IsiVariable.TEXT && string == true) {
+				throw new IsiSemanticException("A variavel "+var.getName()+" não pode receber atribuição do tipo texto");
+			}
 		}
 		
 		public void verificaUtilizacao(){
@@ -715,10 +717,10 @@ public class IsiLangParser extends Parser {
 			match(SC);
 
 			               	 CommandAtribuicao cmd = new CommandAtribuicao(_exprID, _exprContent);
-			               	 compatType(_exprID);
 			               	 stack.peek().add(cmd);
 			               	 IsiVariable var = (IsiVariable)symbolTable.get(_exprID);
 			               	 var.setValue(_exprContent);
+			               	 compatType(var);
 			               	 
 			               
 			}
