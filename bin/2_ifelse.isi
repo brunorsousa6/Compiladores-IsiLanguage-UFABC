@@ -1,6 +1,6 @@
 programa
 	
-	texto a, b;
+	numero a, b;
 	
 	
 	a = 10;

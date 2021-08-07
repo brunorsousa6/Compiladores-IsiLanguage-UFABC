@@ -131,7 +131,6 @@ public class IsiLangLexer extends Lexer {
 		public void compatType(IsiVariable var){
 			boolean number = var.getValue().matches(".*[0-9].*");
 			boolean string = var.getValue().matches(".*[a-zA-Z].");
-			System.out.println(var.toString()+" o valor de number "+number+ "o valor de string "+string);
 			
 			if(var.getType() != IsiVariable.NUMBER && number == true){
 				throw new IsiSemanticException("A variavel "+var.getName()+" não pode receber atribuição do tipo numero");

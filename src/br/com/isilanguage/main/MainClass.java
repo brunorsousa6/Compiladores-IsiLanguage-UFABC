@@ -41,7 +41,7 @@ public class MainClass {
 			
 			parser.prog();
 			
-			System.out.println("Compilacao bem sucedida");
+			System.out.println("Compilação bem sucedida");
 			long initial = System.currentTimeMillis();
 			
 			parser.exibeComandos();

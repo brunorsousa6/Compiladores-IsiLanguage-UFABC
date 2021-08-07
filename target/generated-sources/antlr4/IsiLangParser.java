@@ -102,7 +102,6 @@ public class IsiLangParser extends Parser {
 		public void compatType(IsiVariable var){
 			boolean number = var.getValue().matches(".*[0-9].*");
 			boolean string = var.getValue().matches(".*[a-zA-Z].");
-			System.out.println(var.toString()+" o valor de number "+number+ "o valor de string "+string);
 			
 			if(var.getType() != IsiVariable.NUMBER && number == true){
 				throw new IsiSemanticException("A variavel "+var.getName()+" n�o pode receber atribui��o do tipo numero");
@@ -276,7 +275,7 @@ public class IsiLangParser extends Parser {
 				                     symbolTable.add(symbol);	
 				                  }
 				                  else{
-				                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared ");
+				                  	 throw new IsiSemanticException("A variavel"+_varName+" ja foi declarada");
 				                  }
 			                    
 			setState(45);
@@ -295,7 +294,7 @@ public class IsiLangParser extends Parser {
 					                     symbolTable.add(symbol);	
 					                  }
 					                  else{
-					                  	 throw new IsiSemanticException("Symbol "+_varName+" already declared ");
+					                  	 throw new IsiSemanticException("A variavel "+_varName+" ja foi declarada ");
 					                  }
 				                    
 				}

@@ -1,8 +1,8 @@
 programa
 
-	numero a;
+	texto a;
 	
-	a = 'teste';
+	a = 10;
 
 
 

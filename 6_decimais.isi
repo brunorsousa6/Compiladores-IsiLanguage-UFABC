@@ -1,6 +1,6 @@
 programa
 
-	numero a, b;
+	numero a;
 	
 	a = 2.0;
 	
