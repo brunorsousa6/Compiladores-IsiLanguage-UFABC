@@ -48,8 +48,9 @@ public class MainClass {
 			
 			parser.generateCode();
 			
-			long delay = (System.currentTimeMillis() - initial);
-			System.out.printf("O programa foi compilado em %03d%n milissegundos ", delay);
+			long fim = System.currentTimeMillis();
+			long delay = (fim - initial);
+			System.out.printf("O programa foi compilado em"+delay+"ms");
 			
 		}
 		catch(IsiSemanticException ex) {
