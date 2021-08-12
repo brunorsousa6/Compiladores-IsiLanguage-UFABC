@@ -3,6 +3,11 @@ public class MainClass{
   public static void main(String args[]){
        Scanner _key = new Scanner(System.in);
 double  a;
-a = 2.0;
-a= _key.nextDouble();
+double  b;
+a = 10;
+b = 20;
+if (a>b) {
+System.out.println(a);}else {
+System.out.println(b);}
+
   }}
